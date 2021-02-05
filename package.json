@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "cross-env NODE_ENV=production gulp build",
     "serve": "cross-env NODE_ENV=test gulp",
-    "trail": "cross-env NODE_ENV=trail gulp build"
+    "dev": "cross-env NODE_ENV=dev gulp dev"
   },
   "author": "",
   "license": "ISC",

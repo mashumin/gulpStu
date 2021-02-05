@@ -10,9 +10,9 @@ var fs = require('fs')
 
 var env = 'dev' //用于执行gulp任务时得判断
 function set_env(type){ 
-    env = type || 'dev';
+    process.env.NODE_ENV  = type || 'dev';
     // 生成env.js文件，用于开发页面时，判断环境
-    fs.writeFile("./env.js", `function(){return ${type}}`, function(err){
+    fs.writeFile("./env.js", `function(){return ${process.env.NODE_ENV}}`, function(err){
         err && console.log(err);
     });
 }
@@ -77,14 +77,18 @@ gulp.task('browser',async () =>{
         
     })
 })
-gulp.task('default', gulp.series('clean','html','js','css','img','watch','browser',done => {
-    done()
-}))
+// gulp.task('default', gulp.series('clean','html','js','css','img','watch','browser',done => {
+//     done()
+// }))
 // gulp.task('dev', gulp.series('clean',done => {
 //     set_env('dev')
 //     gulp.series('html','js','css','img','watch','browser')
 //     done()
 // }))
-// gulp.task('build', gulp.series('setEnv','clean','html','js','css','img',done => {
-//     done()
-// }))
+gulp.task('dev', gulp.series('clean','html','js','css','img','watch','browser',done => {
+    done()
+}))
+gulp.task('build', gulp.series('clean','html','js','css','img',done => {
+    done()
+}))
+// 环境变量没弄好，只能gulp dev 和 gulp build 运行

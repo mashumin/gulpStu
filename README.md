@@ -85,7 +85,7 @@ gulp.task('img', async () => {
         .pipe(imagemin())
         .pipe(gulp.dest('./dist/images'))
 })
-// 监听 监听得文件改变时，会自动执行html、cs、js、img等方法
+// 监听 监听得文件改变时，会自动执行对应的方法
 gulp.task('watch', async () => {
     await gulp.watch('./src/*.html',gulp.series('html'))
          gulp.watch('./src/css/*.css',gulp.series('css'))
@@ -129,4 +129,12 @@ gulp.task('htmlMin', function () {
     .pipe(gulp.dest('dev'))
 });
 ```
+
+
+
+webpack和gulp的区别
+
+gulp可以进行js，html，js，css，img的压缩打包，是自动化构建工具，可以将多个js文件或是css压缩成一个文件，并且可以压缩为一行，以此来减少文件的体积，加快请求速度和减少请求次数，并且gulp有task定义处理事务，从而构建整体流程，他是基于流的自动化构建工具
+
+webpack是基于前端的构建工具，实现了模块化开发和文件处理，他的思想就是‘万物皆为模块’，他能够将各个模块按需加载，不会导致加载了 无用或冗余的代码，所以他还有个名字叫做前端模块化打包工具
 

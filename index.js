@@ -1,3 +1,3 @@
 module.exports = function () {
-    process.env
+    process.env.NODE_ENV = 'dev'
 }
